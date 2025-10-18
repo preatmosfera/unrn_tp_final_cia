@@ -1,0 +1,10 @@
+# Entornos
+.venv/
+__pycache__/
+
+# Configs locales
+.env
+
+# Archivos temporales
+*.pyc
+.DS_Store
