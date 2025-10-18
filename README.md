@@ -7,7 +7,7 @@ capaz de registrar decisiones y reportes estructurados en **Notion** mediante su
 - **LangGraph**: orquestación de nodos y transiciones.
 - **Notion API**: persistencia externa.
 - **LangSmith**: observabilidad y trazas.
-- **Python 3.10+**
+- **Python 3.13**
 
 ## Objetivo
 Demostrar la integración de un agente con memoria, reasoning y trazabilidad en un entorno modular.
