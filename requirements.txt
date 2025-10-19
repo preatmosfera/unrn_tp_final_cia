@@ -11,19 +11,19 @@ langchain-core
 # trustcall
 # langgraph-cli[inmem]
 # streamlit
-# langchain_google_genai
 # google-generativeai
 
-# # Curso FreeCamps
 # langgraph
 langchain
+langchain-classic
 # ipython
-# langchain_google_genai
-# langchain_community
+langchain_google_genai
+langchain_community
 # dotenv
 # typing
 # chromadb
-# langchain_chroma
+langchain_chroma
+faiss-cpu
 
 # # MCP
 # mcp
