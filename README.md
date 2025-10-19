@@ -19,6 +19,10 @@ Se implemento un agente capaz de analizar si cuenta con todos los ingredientes p
   >Tú: asado
   
   >Decisión: No se pudo procesar. Receta 'asado' no encontrada en la base de conocimiento.
+
+### 💬 Para salir de la conversación
+En cualquier momento podés escribir:
+  >Tú: salir
   
 ## Componentes principales
 - **LangGraph**: orquestación de nodos y transiciones.

@@ -1,33 +1,15 @@
-# langgraph
-# langgraph-sdk
-# langgraph-checkpoint-sqlite
-# langsmith
-# langchain-community
 langchain-core
-# langchain-openai
-# notebook
-# tavily-python
-# wikipedia
-# trustcall
-# langgraph-cli[inmem]
-# streamlit
-# google-generativeai
-
-# langgraph
 langchain
 langchain-classic
-# ipython
 langchain_google_genai
 langchain_community
-# dotenv
-# typing
-# chromadb
 langchain_chroma
 faiss-cpu
+graphviz
+pydot
+IPython
 
-# # MCP
-# mcp
-# langchain-mcp-adapters
+
 
 #CIA
 notion-client
