@@ -12,7 +12,7 @@
             ],
             "tiempo_preparacion": "10 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Salmón a la Plancha con Arroz",
@@ -25,7 +25,7 @@
             ],
             "tiempo_preparacion": "25 minutos",
             "nivel": "medio",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Lentejas Guisadas",
@@ -41,7 +41,7 @@
             ],
             "tiempo_preparacion": "40 minutos",
             "nivel": "medio",
-            "observacion": "faltan zanahoria, morrón y ajo"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Brownies de Chocolate",
@@ -55,7 +55,7 @@
             ],
             "tiempo_preparacion": "30 minutos",
             "nivel": "medio",
-            "observacion": "faltan nueces"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Milanesas con Puré",
@@ -73,7 +73,7 @@
             ],
             "tiempo_preparacion": "35 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Empanadas de Carne",
@@ -90,7 +90,7 @@
             ],
             "tiempo_preparacion": "45 minutos",
             "nivel": "medio",
-            "observacion": "faltan aceitunas"
+            "observacion": "Faltan: tapa de empanadas, carne picada, huevo duro, aceitunas."
         },
         {
             "nombre": "Tarta de Jamón y Queso",
@@ -105,7 +105,7 @@
             ],
             "tiempo_preparacion": "30 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Tortilla de Papas",
@@ -118,7 +118,7 @@
             ],
             "tiempo_preparacion": "25 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Fideos con Tuco",
@@ -135,7 +135,7 @@
             ],
             "tiempo_preparacion": "35 minutos",
             "nivel": "fácil",
-            "observacion": "faltan laurel y tomate triturado"
+            "observacion": "Faltan: carne picada."
         },
         {
             "nombre": "Pizza Casera",
@@ -151,7 +151,7 @@
             ],
             "tiempo_preparacion": "40 minutos",
             "nivel": "medio",
-            "observacion": "faltan levadura y orégano"
+            "observacion": "Faltan: salsa de tomate, queso mozzarella."
         },
         {
             "nombre": "Bizcochuelo Casero",
@@ -164,7 +164,7 @@
             ],
             "tiempo_preparacion": "30 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Panqueques con Dulce de Leche",
@@ -179,7 +179,7 @@
             ],
             "tiempo_preparacion": "20 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Alfajores de Maicena",
@@ -195,7 +195,7 @@
             ],
             "tiempo_preparacion": "35 minutos",
             "nivel": "medio",
-            "observacion": "faltan coco rallado y dulce de leche"
+            "observacion": "Faltan: maicena, coco rallado."
         },
         {
             "nombre": "Medialunas de Manteca",
@@ -210,7 +210,7 @@
             ],
             "tiempo_preparacion": "1 hora",
             "nivel": "medio",
-            "observacion": "faltan levadura y manteca"
+            "observacion": "Todos los ingredientes están disponibles."
         },
         {
             "nombre": "Ensalada Criolla",
@@ -224,7 +224,7 @@
             ],
             "tiempo_preparacion": "10 minutos",
             "nivel": "fácil",
-            "observacion": "todos los ingredientes están disponibles"
+            "observacion": "Todos los ingredientes están disponibles."
         }
     ]
 }

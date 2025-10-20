@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 # Importar tus módulos locales
 from knowledge import load_documents
-from mock_notion_connector import NotionConnector
+from notion_connector import NotionConnector
 
 
 class RagTools:
@@ -49,7 +49,7 @@ class RagTools:
         vectorstore = FAISS.from_documents(all_splits, self.embeddings)
         print("Base de Conocimiento RAG lista (FAISS).")
         return vectorstore.as_retriever(search_kwargs={"k": 2})
-    
+
     def _build_recipe_chain(self):
         """Método privado para construir la cadena de extracción de recetas."""
         recipe_prompt = ChatPromptTemplate.from_template(
@@ -65,7 +65,7 @@ class RagTools:
         """Método privado para construir la cadena de extracción de inventario."""
         inventory_prompt = ChatPromptTemplate.from_template(
             "Eres un asistente de inventario. Basado en el siguiente contexto, "
-            "extrae TODOS los items de comida disponibles en la heladera y la despensa.\n\n"
+            "extrae TODOS los items disponibles en la heladera y la despensa.\n\n"
             "Contexto:\n{context}\n\n"
             "Responde SÓLO con los nombres de los items (ej: 'huevos', 'leche', 'queso rallado'), "
             "separados por comas."

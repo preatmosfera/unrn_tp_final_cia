@@ -26,21 +26,21 @@ class CookingAgentNodes:
         """
         print(f"\n[Nodo 1: get_required_ingredients]")
         recipe_name = state['recipe_name']
-        
+
         context_docs = self.tools.retriever.invoke(recipe_name)
-        
+
         print(f"-> Consultando RAG-LLM por ingredientes para: '{recipe_name}'")
         ingredients_str = self.tools.recipe_chain.invoke({
             "context": context_docs,
             "recipe_name": recipe_name
         })
-        
+
         if "RECETA_NO_ENCONTRADA" in ingredients_str:
             print("-> ERROR: Receta no encontrada.")
             ingredients_list = ["RECETA_NO_ENCONTRADA"]
         else:
             ingredients_list = _normalize_list(ingredients_str)
-            
+
         print(f"-> Ingredientes requeridos: {ingredients_list}")
         state['required_ingredients'] = ingredients_list
         return state
@@ -109,9 +109,16 @@ class CookingAgentNodes:
         """
         print(f"\n[Nodo 4: generate_notion_report]")
 
+        recipe_found = "RECETA_NO_ENCONTRADA" not in state['required_ingredients']
+        can_cook = recipe_found and not state['missing_ingredients']
+
+        se_puede = "Sí" if can_cook else "No"
+
         report_data = {
-            "name": f"Informe de Cocina: {state['recipe_name']}",
-            "comentario": state['decision'],
+            "receta_nombre": state['recipe_name'],
+            "decision_texto": state['decision'],
+            "se_puede_cocinar": se_puede,
+            "faltantes_lista": state['missing_ingredients'],
             "fecha": datetime.now().strftime("%Y-%m-%d")
         }
 
@@ -129,9 +136,7 @@ class CookingAgentNodes:
         try:
             self.tools.notion_tool.add_entry(
                 database_id=self.tools.notion_db_id,
-                name=report_data['name'],
-                comentario=report_data['comentario'],
-                fecha=report_data['fecha']
+                **report_data
             )
             print("-> Persistencia en Notion completada.")
         except Exception as e:

@@ -15,45 +15,81 @@ class NotionConnector:
         self.parent_id = os.getenv("NOTION_PARENT_ID")
 
         if not self.token:
-            raise ValueError("❌ Falta NOTION_TOKEN en el archivo .env")
+            raise ValueError("Falta NOTION_TOKEN en el archivo .env")
         if not self.parent_id:
-            raise ValueError("❌ Falta NOTION_PARENT_ID en el archivo .env")
+            raise ValueError("Falta NOTION_PARENT_ID en el archivo .env")
 
-        self.notion = Client(auth=self.token)
+        try:
+            self.notion = Client(auth=self.token)
 
-    def create_database(self, title: str):
+        except Exception as e:
+            print(f"ERROR al inicializar el cliente de Notion: {e}")
+            raise
+
+    def create_database(self, db_name: str = "Log de Cocina"):
         """Crea una base de datos dentro de la página especificada en el .env."""
-        db = self.notion.databases.create(
-            parent={"type": "page_id", "page_id": self.parent_id},
-            title=[{"type": "text", "text": {"content": title}}],
-            properties={
-                "Name": {"title": {}},
-                "Comentario": {"rich_text": {}},
-                "Fecha": {"date": {}},
+
+        properties_schema={
+            "Receta": {"title": {}},
+            "Decisión": {"rich_text": {}},
+            "Se puede cocinar?": {
+                "select": {
+                    "options": [
+                        {"name": "Sí", "color": "green"},
+                        {"name": "No", "color": "red"},
+                    ]
+                }
             },
-        )
+            "Faltantes": {"rich_text": {}},
+            "Fecha": {"date": {}}
+            }
+        try:
+            response = self.notion.databases.create(
+                parent={"page_id": self.parent_id},
+                title=[{"type": "text", "text": {"content": db_name}}],
+                properties=properties_schema
+            )
+            new_db_id = response['id']
+            print("Base creada correctamente:")
+            
+            return new_db_id
+        except Exception as e:
+            print(f"ERROR al crear la base de datos: {e}")
+            print("Causas probables: 1) El 'PARENT_PAGE_ID' es incorrecto. 2) La API key no tiene permisos.")
+            return None
 
-        print("✅ Base creada correctamente:")
-        print(f"- Título: {db['title'][0]['plain_text']}")
-        print(f"- ID: {db['id']}")
-        print(f"- URL: {db['url']}")
-        return db["id"]
-
-    def add_entry(self, database_id: str, name: str, comentario: str, fecha: str = None):
+    def add_entry(self, database_id: str, receta_nombre: str, decision_texto: str, se_puede_cocinar: str, faltantes_lista: list, fecha: str):
         """Agrega una nueva fila (página) a una base de datos existente."""
-        properties = {
-            "Name": {"title": [{"text": {"content": name}}]},
-            "Comentario": {"rich_text": [{"text": {"content": comentario}}]},
+
+        # lista de faltantes
+        faltantes_str = ", ".join(faltantes_lista) if faltantes_lista else "Ninguno"
+
+        new_page_properties = {
+            "Receta": {
+                "title": [{"text": {"content": receta_nombre}}]
+            },
+            "Decisión": {
+                "rich_text": [{"text": {"content": decision_texto}}]
+            },
+            "Se puede cocinar?": {
+                "select": {"name": se_puede_cocinar}
+            },
+            "Faltantes": {
+                "rich_text": [{"text": {"content": faltantes_str}}]
+            },
+            "Fecha": {
+                "date": {"start": fecha} # Formato YYYY-MM-DD
+            }
         }
-        if fecha:
-            properties["Fecha"] = {"date": {"start": fecha}}
 
-        page = self.notion.pages.create(
-            parent={"database_id": database_id},
-            properties=properties,
-        )
-
-        print("📝 Registro agregado:")
-        print(f"- Nombre: {name}")
-        print(f"- URL: {page['url']}")
-        return page["id"]
+        print(f"Enviando entrada a Notion DB ID: {database_id}...")
+        try:
+            response = self.notion.pages.create(
+                parent={"database_id": database_id},
+                properties=new_page_properties
+            )
+            print(f"Nueva página creada en Notion con ID: {response['id']}")
+            return response
+        except Exception as e:
+            print(f"ERROR al crear la página en Notion: {e}")
+            return None

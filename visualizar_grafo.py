@@ -36,4 +36,3 @@ except Exception:
     pass
 
 print(f"✅ Diagrama guardado correctamente en: {output_path}\n")
-

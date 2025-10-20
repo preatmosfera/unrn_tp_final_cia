@@ -66,6 +66,15 @@ Demostrar la integración de un agente con memoria, reasoning y trazabilidad en 
 
 Dentro del entorno virtual ejecutar:
 
-```
-python main.py
-```
+1. Si no existe la base de datos en Notion, crearla por única vez.
+
+    ```
+    python setup_notion.py
+    ```
+
+1. Actualizar el archivo .env en la variable `NOTION_DATABASE_ID=`
+
+1. Ejecutar el agente
+    ```
+    python main.py
+    ```

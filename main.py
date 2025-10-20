@@ -44,7 +44,7 @@ def chat_loop():
         sys.exit(0)
     except Exception as e:
         print(f"\nHa ocurrido un error: {e}")
-        
+
     print("\n🤖 ¡Hasta luego!")
 
 if __name__ == "__main__":
